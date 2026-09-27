@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ArtisanAI – Büroassistent für Handwerker</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f7fb;color:#172033}
+button{font:inherit;cursor:pointer}.wrap{max-width:1100px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.brand{font-weight:800;font-size:22px}.badge{background:#e9f7ef;color:#16733b;border-radius:20px;padding:7px 11px;font-size:12px;font-weight:700}
+.hero{background:#172033;color:white;border-radius:22px;padding:25px;margin-bottom:18px}.hero h1{font-size:30px;line-height:1.08;margin:0 0 10px}.hero p{color:#cbd3e1;margin:0;max-width:700px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:white;border:1px solid #e5e9f0;border-radius:18px;padding:18px;box-shadow:0 5px 18px rgba(20,35,60,.05)}.wide{grid-column:span 2}.stat{font-size:30px;font-weight:800;margin:8px 0}.muted{color:#6d7788;font-size:13px}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.item{padding:13px 0;border-top:1px solid #edf0f4}.item:first-child{border-top:0}.pill{padding:5px 9px;border-radius:12px;background:#eef2f7;font-size:11px;font-weight:700}.btn{border:0;border-radius:12px;padding:11px 14px;background:#1d6df2;color:#fff;font-weight:700}.reply{background:#f7f9fc;border-radius:14px;padding:13px;margin-top:10px;display:none;white-space:pre-line}.nav{display:flex;gap:8px;overflow:auto;margin-bottom:14px}.nav button{white-space:nowrap;border:0;background:white;border:1px solid #e2e7ef;padding:9px 12px;border-radius:12px}.nav button.active{background:#172033;color:white}.section{display:none}.section.active{display:block}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}.hero h1{font-size:25px}.wrap{padding:12px}.card{padding:15px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><div class="brand">ArtisanAI</div><div class="badge">DEMO · Schweiz</div></div>
+<div class="hero"><h1>Ihr KI-Büroassistent für den Handwerksbetrieb.</h1><p>Kundenanfragen verstehen, Rückfragen stellen, Termine vorbereiten und Offerten schneller erstellen – direkt aus einem einfachen Posteingang.</p></div>
+<div class="nav">
+<button class="active" onclick="show('dash',this)">Dashboard</button>
+<button onclick="show('inbox',this)">KI-Posteingang</button>
+<button onclick="show('quotes',this)">Offerten</button>
+<button onclick="show('calendar',this)">Kalender</button>
+<button onclick="show('customers',this)">Kunden</button>
+</div>
+
+<section id="dash" class="section active"><div class="grid">
+<div class="card"><div class="muted">Neue Anfragen</div><div class="stat">7</div><div class="muted">+2 heute</div></div>
+<div class="card"><div class="muted">Offene Offerten</div><div class="stat">4</div><div class="muted">CHF 8'420 Potenzial</div></div>
+<div class="card"><div class="muted">Termine heute</div><div class="stat">3</div><div class="muted">Nächster 14:30</div></div>
+<div class="card wide"><h3>Heute erledigen</h3>
+<div class="item row"><div><b>Heizung verliert Druck</b><div class="muted">Müller · Zürich · dringend</div></div><span class="pill">NEU</span></div>
+<div class="item row"><div><b>Badarmatur ersetzen</b><div class="muted">Keller · Winterthur</div></div><span class="pill">Offerte</span></div>
+<div class="item row"><div><b>Boiler-Service</b><div class="muted">Meier · Uster · 16:00</div></div><span class="pill">Termin</span></div>
+</div>
+<div class="card"><h3>Schnellaktion</h3><button class="btn" onclick="show('inbox',document.querySelectorAll('.nav button')[1])">KI-Posteingang öffnen</button></div>
+</div></section>
+
+<section id="inbox" class="section"><div class="card">
+<div class="row"><div><h2>KI-Posteingang</h2><div class="muted">Neue Kundenanfragen werden automatisch vorqualifiziert.</div></div><span class="pill">3 neu</span></div>
+<div class="item"><div class="row"><div><b>„Unsere Heizung macht seit gestern Geräusche…“</b><div class="muted">Anna Müller · Zürich · WhatsApp</div></div><span class="pill">Dringend</span></div>
+<button class="btn" style="margin-top:10px" onclick="toggleReply(this)">Antwort vorbereiten</button>
+<div class="reply">Guten Tag Frau Müller,
+
+danke für Ihre Nachricht. Ich helfe Ihnen gerne weiter. Können Sie bitte ein kurzes Foto vom Heizgerät und vom Display senden? Falls Wasser austritt oder die Heizung komplett ausgefallen ist, teilen Sie uns das bitte ebenfalls mit.
+
+Freundliche Grüsse
+Ihr Sanitärbetrieb</div></div>
+<div class="item"><div class="row"><div><b>„Ich brauche eine neue Küchenarmatur.“</b><div class="muted">Peter Keller · Winterthur</div></div><span class="pill">Normal</span></div></div>
+</div></section>
+
+<section id="quotes" class="section"><div class="card"><h2>Offerten</h2>
+<div class="item row"><div><b>Offerte #1048</b><div class="muted">Badarmatur ersetzen · Keller</div></div><div><b>CHF 680</b><br><span class="pill">Entwurf</span></div></div>
+<div class="item row"><div><b>Offerte #1047</b><div class="muted">Boiler-Service · Meier</div></div><div><b>CHF 390</b><br><span class="pill">Gesendet</span></div></div>
+</div></section>
+
+<section id="calendar" class="section"><div class="card"><h2>Kalender</h2>
+<div class="item"><b>14:30 – Heizungscheck</b><div class="muted">Müller · Zürich · Adresse bestätigt</div></div>
+<div class="item"><b>16:00 – Boiler-Service</b><div class="muted">Meier · Uster</div></div>
+</div></section>
+
+<section id="customers" class="section"><div class="card"><h2>Kunden</h2>
+<div class="item row"><div><b>Anna Müller</b><div class="muted">Zürich · 3 Aufträge</div></div><span class="pill">Aktiv</span></div>
+<div class="item row"><div><b>Peter Keller</b><div class="muted">Winterthur · 1 Auftrag</div></div><span class="pill">Lead</span></div>
+</div></section>
+</div>
+<script>
+function show(id,btn){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));btn.classList.add('active')}
+function toggleReply(btn){const r=btn.nextElementSibling;r.style.display=r.style.display==='block'?'none':'block';btn.textContent=r.style.display==='block'?'Antwort schliessen':'Antwort vorbereiten'}
+</script>
+</body>
+</html>
